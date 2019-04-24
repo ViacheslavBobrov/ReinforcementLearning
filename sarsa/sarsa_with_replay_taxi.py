@@ -17,7 +17,6 @@ class ReplayBuffer:
     def sample(self, batch_size):
         if len(self.buffer) <= batch_size:
             return self.buffer
-        # Replace=False makes random.choice O(n)
         keys = np.random.choice(len(self.buffer), batch_size, replace=True)
         return [self.buffer[key] for key in keys]
 
